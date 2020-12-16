@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="ru.mvlikhachev.wetogether.screens.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_preSettingsFragment"
+            app:destination="@id/preSettingsFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/preSettingsFragment"
+        android:name="ru.mvlikhachev.wetogether.screens.PreSettingsFragment"
+        android:label="fragment_pre_settings"
+        tools:layout="@layout/fragment_pre_settings" >
+        <action
+            android:id="@+id/action_preSettingsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_preSettingsFragment_to_firebaseLoginSignoutFragment"
+            app:destination="@id/firebaseLoginSignoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="ru.mvlikhachev.wetogether.screens.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firebaseLoginSignoutFragment"
+        android:name="ru.mvlikhachev.wetogether.screens.FirebaseLoginSignoutFragment"
+        android:label="fragment_firebase_login_signout"
+        tools:layout="@layout/fragment_firebase_login_signout" >
+        <action
+            android:id="@+id/action_firebaseLoginSignoutFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="ru.mvlikhachev.wetogether.screens.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_preSettingsFragment"
+            app:destination="@id/preSettingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_firebaseLoginSignoutFragment"
+            app:destination="@id/firebaseLoginSignoutFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+</navigation>
