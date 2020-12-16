@@ -18,3 +18,15 @@ class PreSettingsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_pre_settings, container, false)
     }
 }
+
+//public void onGenderButtonClicked(View view) {
+//    if(feButton.isPressed()){
+//        maButton.setEnabled(false);
+//        radioPressed = true;
+//    } else if (maButton.isPressed()){
+//        feButton.setEnabled(false);
+//        radioPressed = true;
+//    } else {
+//        radioPressed = false;
+//    }
+//}
