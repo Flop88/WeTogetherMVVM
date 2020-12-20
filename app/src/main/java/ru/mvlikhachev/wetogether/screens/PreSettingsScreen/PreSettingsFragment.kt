@@ -28,6 +28,14 @@ class PreSettingsFragment : Fragment() {
     private val mBinding get() = _binding!!
     private lateinit var mViewModel: PreSettingsFragmentViewModel
 
+    private lateinit var yourNameText: String
+    private lateinit var yourBirthdayDateText: String
+    private lateinit var yourGenderText: String
+    private lateinit var partnerNameText: String
+    private lateinit var partnerBirthdayText: String
+    private lateinit var partnerGenderText: String
+    private lateinit var loveDayText: String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,46 +49,91 @@ class PreSettingsFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-//        var database: AppRoomDatabase?= AppRoomDatabase.getInstance(APP_ACTIVITY)
-//        if (database.) {
-//            Log.d("dbtest", "DB is empty")
-//        } else {
-//            Log.d("dbtest", "DB is not empty")
-//        }
         initialization()
     }
 
     private fun initialization() {
         mViewModel = ViewModelProvider(this).get(PreSettingsFragmentViewModel::class.java)
         savePreSettingButton.setOnClickListener {
-            mViewModel.initDatabase(TYPE_ROOM) {
-                APP_ACTIVITY.mNavController.navigate(R.id.action_preSettingsFragment_to_mainFragment)
-            }
+//            mViewModel.initDatabase(TYPE_ROOM) {
+
+//                APP_ACTIVITY.mNavController.navigate(R.id.action_preSettingsFragment_to_mainFragment)
+//            }
+            setYourData()
+            setPartnerData()
+            setLoveDate()
+            Log.d("getAllData", "Name: $yourNameText")
+            Log.d("getAllData", "Birthday: $yourBirthdayDateText")
+            Log.d("getAllData", "Your gender: $yourGenderText")
+            Log.d("getAllData", "Partner name: $partnerNameText")
+            Log.d("getAllData", "Partner birdthday: $partnerBirthdayText")
+            Log.d("getAllData", "Partner gender: $partnerGenderText")
+            Log.d("getAllData", "Love Dater: $loveDayText")
         }
-        setYourData()
+
+        yourNameText = textInputYourName.editText?.text.toString().trim()
+        yourBirthdayDateText = yourBirthdayDate.text.toString().trim()
+        yourGenderText = "Unknown"
+
+        partnerNameText = textInputLoveName.editText?.getText().toString().trim()
+        partnerBirthdayText = partnerBirthdayDate.text.toString().trim()
+        partnerGenderText = "Unknown"
 
     }
 
     private fun setYourData() {
 
+        yourNameText = textInputYourName.editText?.text.toString().trim()
         yourBirthdayDate.setOnClickListener {
-            setYourBirthdayDate()
+            setDate(yourBirthdayDate)
+            yourBirthdayDateText = yourBirthdayDate.text.toString().trim()
         }
         yourGender.setOnCheckedChangeListener { radioGroup, i ->
             if (yourGenderMan.isChecked) {
-                setYourGender(0)
+                yourGenderText = setGender(0)
             } else if (yourGenderWoman.isChecked) {
-                setYourGender(1)
+                yourGenderText = setGender(1)
+            }
+        }
+    }
+    private fun setPartnerData() {
+
+        partnerNameText = textInputLoveName.editText?.getText().toString().trim()
+        partnerBirthdayDate.setOnClickListener {
+            setDate(partnerBirthdayDate)
+            partnerBirthdayText = partnerBirthdayDate.text.toString().trim()
+        }
+        partnerGender.setOnCheckedChangeListener { radioGroup, i ->
+            if (partnerGenderMan.isChecked) {
+                partnerGenderText = setGender(0)
+            } else if (partnerGenderWoman.isChecked) {
+                partnerGenderText = setGender(1)
             }
         }
     }
 
-    private fun setYourGender(i: Int) {
-        TODO("Not yet implemented")
+    private fun setLoveDate() {
+        loveDayText = loveDate.text.toString().trim()
+        loveDate.setOnClickListener {
+            setDate(loveDate)
+            loveDayText = loveDate.text.toString().trim()
+        }
     }
 
 
-    fun setYourBirthdayDate(){
+
+    private fun setGender(i: Int) : String {
+        lateinit var gender: String
+        if (i == 0) {
+            gender = "Мужской"
+        } else if(i == 1) {
+            gender = "Женский"
+        }
+        return gender
+    }
+
+
+    fun setDate(date: TextView?){
         var result = "01.01.01"
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -89,48 +142,15 @@ class PreSettingsFragment : Fragment() {
 
         val datePickerDialog = DatePickerDialog(APP_ACTIVITY, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
             result = "${mDay.toString()}.${mMonth.toString()}.${mYear.toString()}"
-            yourBirthdayDate.text = result
+            date?.text = result
 
         }, year, month, day)
 
         datePickerDialog.show()
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
-
-//val textView: TextView  = findViewById(R.id.textView_date)
-//textView.text = SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
-//
-//var cal = Calendar.getInstance()
-//
-//val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-//    cal.set(Calendar.YEAR, year)
-//    cal.set(Calendar.MONTH, monthOfYear)
-//    cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-//
-//    val myFormat = "dd.MM.yyyy" // mention the format you need
-//    val sdf = SimpleDateFormat(myFormat, Locale.US)
-//    textView.text = sdf.format(cal.time)
-//
-//}
-//
-//textView.setOnClickListener {
-//    DatePickerDialog(this@MainActivity, dateSetListener,
-//        cal.get(Calendar.YEAR),
-//        cal.get(Calendar.MONTH),
-//        cal.get(Calendar.DAY_OF_MONTH)).show()
-//}
-//}
-
-//public void onGenderButtonClicked(View view) {
-//    if(feButton.isPressed()){
-//        maButton.setEnabled(false);
-//        radioPressed = true;
-//    } else if (maButton.isPressed()){
-//        feButton.setEnabled(false);
-//        radioPressed = true;
-//    } else {
-//        radioPressed = false;
-//    }
-//}
