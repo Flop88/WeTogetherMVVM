@@ -12,6 +12,8 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+
+
         val thread: Thread = object : Thread() {
             override fun run() {
                 try {
