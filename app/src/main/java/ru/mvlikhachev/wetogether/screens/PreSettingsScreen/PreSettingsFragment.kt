@@ -8,10 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
+import kotlinx.android.synthetic.main.fragment_pre_settings.*
 import ru.mvlikhachev.wetogether.R
 import ru.mvlikhachev.wetogether.databinding.FragmentMainBinding
 import ru.mvlikhachev.wetogether.databinding.FragmentPreSettingsBinding
 import ru.mvlikhachev.wetogether.utils.APP_ACTIVITY
+import ru.mvlikhachev.wetogether.utils.TYPE_ROOM
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,6 +23,7 @@ class PreSettingsFragment : Fragment() {
 
     private var _binding: FragmentPreSettingsBinding? = null
     private val mBinding get() = _binding!!
+    private lateinit var mViewModel: PreSettingsFragmentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,34 +38,17 @@ class PreSettingsFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-//        initDatePicker()
+        initialization()
     }
 
-    private fun initDatePicker() {
-        lateinit var textYourBirthday: TextView  // <---- ????
-        textYourBirthday.text = SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
-
-        var cal = Calendar.getInstance()
-
-        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            cal.set(Calendar.YEAR, year)
-            cal.set(Calendar.MONTH, monthOfYear)
-            cal.set(Calendar.DAY_OF_YEAR, dayOfMonth)
-
-            val myFormat = "dd.MM.yyy"
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
-            textYourBirthday.text = sdf.format(cal.time)
+    private fun initialization() {
+        mViewModel = ViewModelProvider(this).get(PreSettingsFragmentViewModel::class.java)
+        savePreSettingButton.setOnClickListener {
+            mViewModel.initDatabase(TYPE_ROOM)
         }
-
-        textYourBirthday.setOnClickListener {
-            DatePickerDialog(
-                APP_ACTIVITY, dateSetListener,
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)).show()
-        }
-
     }
+
+
 }
 
 //val textView: TextView  = findViewById(R.id.textView_date)

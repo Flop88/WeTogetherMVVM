@@ -37,13 +37,51 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/yourBirthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ваша дата рождения"
+                android:hint="Ваша дата рождения:"
                 android:textSize="18sp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/yourBirthdayDate"
+                android:hint="01.01.1990"
+                style="@style/pre_settings_date_style"/>
+
+
+            <RadioGroup
+                android:id="@+id/yourGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView1"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:text="Ваш пол"
+                    android:textSize="20sp"/>
+
+                <RadioButton
+                    android:id="@+id/yourGenderMan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Мужской" />
+
+                <RadioButton
+                    android:id="@+id/yourGenderWoman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Женский" />
+            </RadioGroup>
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLoveName"
@@ -60,51 +98,62 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/loveBirthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ваша дата партнера"
+                android:hint="Дата рождения партнера:"
                 android:textSize="18sp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginBottom="16dp" />
 
+            <TextView
+                android:id="@+id/partnerBirthdayDate"
+                android:hint="01.01.1990"
+                style="@style/pre_settings_date_style"/>
+
             <RadioGroup
-                android:id="@+id/radioGroup1"
+                android:id="@+id/partnerGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textView1"
-                android:layout_marginTop="8dp" >
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="15dp"
-                    android:text="Пол"
+                    android:text="Пол партнера"
                     android:textSize="20sp"/>
 
                 <RadioButton
-                    android:id="@+id/radio0"
+                    android:id="@+id/partnerGenderMan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="Мужской" />
 
                 <RadioButton
-                    android:id="@+id/radio1"
+                    android:id="@+id/partnerGenderWoman"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Женский" />
             </RadioGroup>
 
+
             <TextView
                 android:id="@+id/theDayIFeelLove"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Дата начала отношений"
+                android:hint="Дата начала отношений:"
                 android:textSize="18sp"
                 android:layout_margin="16dp" />
+
+            <TextView
+                android:id="@+id/loveDate"
+                android:hint="01.01.1990"
+                style="@style/pre_settings_date_style" />
 
             <TextView
                 android:layout_width="wrap_content"
