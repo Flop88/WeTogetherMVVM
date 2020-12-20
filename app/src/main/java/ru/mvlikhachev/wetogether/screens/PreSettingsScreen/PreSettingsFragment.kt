@@ -1,6 +1,7 @@
 package ru.mvlikhachev.wetogether.screens.PreSettingsScreen
 
 import android.app.DatePickerDialog
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_pre_settings.*
 import ru.mvlikhachev.wetogether.R
@@ -46,6 +48,43 @@ class PreSettingsFragment : Fragment() {
         savePreSettingButton.setOnClickListener {
             mViewModel.initDatabase(TYPE_ROOM)
         }
+        setYourData()
+
+    }
+
+    private fun setYourData() {
+
+        yourBirthdayDate.setOnClickListener {
+            setYourBirthdayDate()
+        }
+        yourGender.setOnCheckedChangeListener { radioGroup, i ->
+            if (yourGenderMan.isChecked) {
+                setYourGender(0)
+            } else if (yourGenderWoman.isChecked) {
+                setYourGender(1)
+            }
+        }
+    }
+
+    private fun setYourGender(i: Int) {
+        TODO("Not yet implemented")
+    }
+
+
+    fun setYourBirthdayDate(){
+        var result = "01.01.01"
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_YEAR)
+
+        val datePickerDialog = DatePickerDialog(APP_ACTIVITY, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+            result = "${mDay.toString()}.${mMonth.toString()}.${mYear.toString()}"
+            yourBirthdayDate.text = result
+
+        }, year, month, day)
+
+        datePickerDialog.show()
     }
 
 

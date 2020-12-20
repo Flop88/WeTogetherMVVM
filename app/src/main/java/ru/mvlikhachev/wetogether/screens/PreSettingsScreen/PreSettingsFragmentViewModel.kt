@@ -2,7 +2,10 @@ package ru.mvlikhachev.wetogether.screens.PreSettingsScreen
 
 import android.app.Application
 import android.app.DatePickerDialog
+import android.os.Build
+import android.util.Log
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import ru.mvlikhachev.wetogether.utils.APP_ACTIVITY
 import java.text.SimpleDateFormat
