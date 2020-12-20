@@ -13,6 +13,7 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_pre_settings.*
 import ru.mvlikhachev.wetogether.R
+import ru.mvlikhachev.wetogether.database.Room.AppRoomDatabase
 import ru.mvlikhachev.wetogether.databinding.FragmentMainBinding
 import ru.mvlikhachev.wetogether.databinding.FragmentPreSettingsBinding
 import ru.mvlikhachev.wetogether.utils.APP_ACTIVITY
@@ -33,13 +34,19 @@ class PreSettingsFragment : Fragment() {
     ): View? {
 
         _binding = FragmentPreSettingsBinding.inflate(layoutInflater, container, false)
-
         // Inflate the layout for this fragment
         return mBinding.root
     }
 
     override fun onStart() {
         super.onStart()
+
+//        var database: AppRoomDatabase?= AppRoomDatabase.getInstance(APP_ACTIVITY)
+//        if (database.) {
+//            Log.d("dbtest", "DB is empty")
+//        } else {
+//            Log.d("dbtest", "DB is not empty")
+//        }
         initialization()
     }
 

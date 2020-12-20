@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import ru.mvlikhachev.wetogether.MainActivity
 import ru.mvlikhachev.wetogether.R
+import ru.mvlikhachev.wetogether.database.Room.AppRoomDatabase
+import ru.mvlikhachev.wetogether.utils.APP_ACTIVITY
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

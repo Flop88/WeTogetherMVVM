@@ -1,175 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".screens.PreSettingsScreen.PreSettingsFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/presettings_bg" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <TextView
+            <ImageView
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
-                android:text="Logo"
-                android:textSize="80sp"
-                android:textAlignment="center"/>
+                android:background="@drawable/presettings_logo"
+                android:textAlignment="center"
+                android:textSize="80sp" />
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputYourName"
-                app:errorEnabled="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:hint="@string/yourName" />
+                    android:hint="@string/yourName"
+                    android:inputType="textPersonName" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ваша дата рождения:"
-                android:textSize="18sp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginBottom="16dp" />
+                android:text="Ваша дата рождения:"
+                style="@style/pre_settings_text_style" />
 
             <TextView
                 android:id="@+id/yourBirthdayDate"
-                android:hint="01.01.1990"
-                style="@style/pre_settings_date_style"/>
+                style="@style/pre_settings_date_style"
+                android:text="01.01.1990" />
 
 
             <RadioGroup
                 android:id="@+id/yourGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textView1"
+                android:layout_alignParentLeft="true"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="15dp"
                     android:text="Ваш пол"
-                    android:textSize="20sp"/>
+                    style="@style/pre_settings_radiogroup_text" />
 
                 <RadioButton
                     android:id="@+id/yourGenderMan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Мужской" />
+                    android:text="Мужской"
+                    style="@style/pre_settings_radiobutton_text" />
 
                 <RadioButton
                     android:id="@+id/yourGenderWoman"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Женский" />
+                    android:text="Женский"
+                    style="@style/pre_settings_radiobutton_text"/>
             </RadioGroup>
-
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLoveName"
-                app:errorEnabled="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="@string/loveName" />
+                    android:hint="@string/loveName"
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Дата рождения партнера:"
-                android:textSize="18sp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginBottom="16dp" />
+                android:text="Дата рождения партнера:"
+                style="@style/pre_settings_text_style" />
 
             <TextView
                 android:id="@+id/partnerBirthdayDate"
-                android:hint="01.01.1990"
-                style="@style/pre_settings_date_style"/>
+                style="@style/pre_settings_date_style"
+                android:text="01.01.1990" />
 
             <RadioGroup
                 android:id="@+id/partnerGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textView1"
+                android:layout_alignParentLeft="true"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="15dp"
                     android:text="Пол партнера"
-                    android:textSize="20sp"/>
+                    style="@style/pre_settings_radiogroup_text"/>
 
                 <RadioButton
                     android:id="@+id/partnerGenderMan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="Мужской" />
+                    android:text="Мужской"
+                    style="@style/pre_settings_radiobutton_text"/>
 
                 <RadioButton
                     android:id="@+id/partnerGenderWoman"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Женский" />
+                    android:text="Женский"
+                    style="@style/pre_settings_radiobutton_text"/>
             </RadioGroup>
 
 
             <TextView
-                android:id="@+id/theDayIFeelLove"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Дата начала отношений:"
-                android:textSize="18sp"
-                android:layout_margin="16dp" />
+                android:text="Дата начала отношений:"
+                style="@style/pre_settings_text_style" />
 
             <TextView
                 android:id="@+id/loveDate"
-                android:hint="01.01.1990"
-                style="@style/pre_settings_date_style" />
+                style="@style/pre_settings_date_style"
+                android:text="01.01.1990" />
 
             <TextView
+                android:id="@+id/dangedLoginSignUpTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/dangedLoginSignUpTextView"
-                android:text="Все ваши данные будут зашифрованы и не попадут 3-им лицам."
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
-                android:textSize="12sp"/>
+                android:text="Все ваши данные будут зашифрованы и не попадут 3-им лицам."
+                android:textSize="12sp" />
 
             <Button
                 android:id="@+id/savePreSettingButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/registration"
                 android:layout_marginTop="10dp"
-                />
+                android:text="@string/registration" />
 
         </LinearLayout>
     </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
