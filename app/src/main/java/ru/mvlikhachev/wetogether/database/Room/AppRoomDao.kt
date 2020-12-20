@@ -11,11 +11,8 @@ interface AppRoomDao {
     fun getAllPersons() : LiveData<List<AppPerson>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(appPerson: AppPerson)
+    suspend fun insert(note: AppPerson)
 
     @Delete
-    suspend fun delete(appPerson: AppPerson)
-
-    @Update
-    suspend fun update(appPerson: AppPerson)
+    suspend fun delete(note: AppPerson)
 }

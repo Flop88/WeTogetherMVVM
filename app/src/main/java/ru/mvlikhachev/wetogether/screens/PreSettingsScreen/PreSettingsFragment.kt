@@ -46,7 +46,9 @@ class PreSettingsFragment : Fragment() {
     private fun initialization() {
         mViewModel = ViewModelProvider(this).get(PreSettingsFragmentViewModel::class.java)
         savePreSettingButton.setOnClickListener {
-            mViewModel.initDatabase(TYPE_ROOM)
+            mViewModel.initDatabase(TYPE_ROOM) {
+                APP_ACTIVITY.mNavController.navigate(R.id.action_preSettingsFragment_to_mainFragment)
+            }
         }
         setYourData()
 

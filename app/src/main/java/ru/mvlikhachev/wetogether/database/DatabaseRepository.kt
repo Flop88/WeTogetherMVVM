@@ -9,5 +9,4 @@ interface DatabaseRepository {
 
     suspend fun insert(person: AppPerson, onSuccess:() -> Unit)
     suspend fun delete(person: AppPerson, onSuccess:() -> Unit)
-    suspend fun update(person: AppPerson, onSuccess:() -> Unit)
 }

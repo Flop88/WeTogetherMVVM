@@ -17,8 +17,5 @@ class AppRoomRepository(private val appRoomDao: AppRoomDao) : DatabaseRepository
         appRoomDao.delete(person)
     }
 
-    override suspend fun update(person: AppPerson, onSuccess: () -> Unit) {
-        appRoomDao.update(person)
-    }
 
 }
