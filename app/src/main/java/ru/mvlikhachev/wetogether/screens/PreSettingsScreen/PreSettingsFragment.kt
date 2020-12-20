@@ -2,6 +2,7 @@ package ru.mvlikhachev.wetogether.screens.PreSettingsScreen
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import ru.mvlikhachev.wetogether.R
 import ru.mvlikhachev.wetogether.databinding.FragmentMainBinding
+import ru.mvlikhachev.wetogether.databinding.FragmentPreSettingsBinding
 import ru.mvlikhachev.wetogether.utils.APP_ACTIVITY
 import java.text.SimpleDateFormat
 import java.util.*
@@ -16,21 +18,23 @@ import java.util.*
 
 class PreSettingsFragment : Fragment() {
 
-    private var _binding: FragmentMainBinding? = null
+    private var _binding: FragmentPreSettingsBinding? = null
     private val mBinding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMainBinding.inflate(layoutInflater, container, false)
+
+        _binding = FragmentPreSettingsBinding.inflate(layoutInflater, container, false)
+
         // Inflate the layout for this fragment
         return mBinding.root
     }
 
     override fun onStart() {
         super.onStart()
-        initDatePicker()
+//        initDatePicker()
     }
 
     private fun initDatePicker() {
