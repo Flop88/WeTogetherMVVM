@@ -54,36 +54,38 @@ class PreSettingsFragment : Fragment() {
 
     private fun initialization() {
         mViewModel = ViewModelProvider(this).get(PreSettingsFragmentViewModel::class.java)
-        savePreSettingButton.setOnClickListener {
-//            mViewModel.initDatabase(TYPE_ROOM) {
+        mViewModel.initDatabase(TYPE_ROOM) {
 
-//                APP_ACTIVITY.mNavController.navigate(R.id.action_preSettingsFragment_to_mainFragment)
-//            }
+            savePreSettingButton.setOnClickListener {
+
+                setYourData()
+                setPartnerData()
+                setLoveDate()
+
+
+                Log.d("getAllData", "Name: $yourNameText")
+                Log.d("getAllData", "Birthday: $yourBirthdayDateText")
+                Log.d("getAllData", "Your gender: $yourGenderText")
+                Log.d("getAllData", "Partner name: $partnerNameText")
+                Log.d("getAllData", "Partner birdthday: $partnerBirthdayText")
+                Log.d("getAllData", "Partner gender: $partnerGenderText")
+                Log.d("getAllData", "Love Dater: $loveDayText")
+            }
+
+            yourNameText = textInputYourName.editText?.text.toString().trim()
+            yourBirthdayDateText = yourBirthdayDate.text.toString().trim()
+            yourGenderText = "Unknown"
+
+            partnerNameText = textInputLoveName.editText?.getText().toString().trim()
+            partnerBirthdayText = partnerBirthdayDate.text.toString().trim()
+            partnerGenderText = "Unknown"
+
             setYourData()
             setPartnerData()
             setLoveDate()
-            Log.d("getAllData", "Name: $yourNameText")
-            Log.d("getAllData", "Birthday: $yourBirthdayDateText")
-            Log.d("getAllData", "Your gender: $yourGenderText")
-            Log.d("getAllData", "Partner name: $partnerNameText")
-            Log.d("getAllData", "Partner birdthday: $partnerBirthdayText")
-            Log.d("getAllData", "Partner gender: $partnerGenderText")
-            Log.d("getAllData", "Love Dater: $loveDayText")
-        }
-
-        yourNameText = textInputYourName.editText?.text.toString().trim()
-        yourBirthdayDateText = yourBirthdayDate.text.toString().trim()
-        yourGenderText = "Unknown"
-
-        partnerNameText = textInputLoveName.editText?.getText().toString().trim()
-        partnerBirthdayText = partnerBirthdayDate.text.toString().trim()
-        partnerGenderText = "Unknown"
-
-        setYourData()
-        setPartnerData()
-        setLoveDate()
 
         }
+    }
 
     private fun setYourData() {
 
@@ -101,6 +103,7 @@ class PreSettingsFragment : Fragment() {
             }
         }
     }
+
     private fun setPartnerData() {
 
         partnerNameText = textInputLoveName.editText?.getText().toString().trim()
@@ -127,30 +130,35 @@ class PreSettingsFragment : Fragment() {
     }
 
 
-
-    private fun setGender(i: Int) : String {
+    private fun setGender(i: Int): String {
         lateinit var gender: String
         if (i == 0) {
             gender = "Мужской"
-        } else if(i == 1) {
+        } else if (i == 1) {
             gender = "Женский"
         }
         return gender
     }
 
 
-    fun setDate(date: TextView?){
+    fun setDate(date: TextView?) {
         var result = "01.01.01"
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_YEAR)
 
-        val datePickerDialog = DatePickerDialog(APP_ACTIVITY, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
-            result = "${mDay.toString()}.${mMonth.toString()}.${mYear.toString()}"
-            date?.text = result
+        val datePickerDialog = DatePickerDialog(
+            APP_ACTIVITY,
+            DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                result = "${mDay.toString()}.${mMonth.toString()}.${mYear.toString()}"
+                date?.text = result
 
-        }, year, month, day)
+            },
+            year,
+            month,
+            day
+        )
 
         datePickerDialog.show()
     }
