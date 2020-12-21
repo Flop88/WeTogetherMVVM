@@ -79,11 +79,16 @@ class PreSettingsFragment : Fragment() {
         partnerBirthdayText = partnerBirthdayDate.text.toString().trim()
         partnerGenderText = "Unknown"
 
-    }
+        setYourData()
+        setPartnerData()
+        setLoveDate()
+
+        }
 
     private fun setYourData() {
 
         yourNameText = textInputYourName.editText?.text.toString().trim()
+        yourBirthdayDateText = yourBirthdayDate.text.toString().trim()
         yourBirthdayDate.setOnClickListener {
             setDate(yourBirthdayDate)
             yourBirthdayDateText = yourBirthdayDate.text.toString().trim()
@@ -99,6 +104,7 @@ class PreSettingsFragment : Fragment() {
     private fun setPartnerData() {
 
         partnerNameText = textInputLoveName.editText?.getText().toString().trim()
+        partnerBirthdayText = partnerBirthdayDate.text.toString().trim()
         partnerBirthdayDate.setOnClickListener {
             setDate(partnerBirthdayDate)
             partnerBirthdayText = partnerBirthdayDate.text.toString().trim()
