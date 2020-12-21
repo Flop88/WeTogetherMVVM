@@ -16,6 +16,7 @@ import ru.mvlikhachev.wetogether.R
 import ru.mvlikhachev.wetogether.database.Room.AppRoomDatabase
 import ru.mvlikhachev.wetogether.databinding.FragmentMainBinding
 import ru.mvlikhachev.wetogether.databinding.FragmentPreSettingsBinding
+import ru.mvlikhachev.wetogether.model.AppPerson
 import ru.mvlikhachev.wetogether.utils.APP_ACTIVITY
 import ru.mvlikhachev.wetogether.utils.TYPE_ROOM
 import java.text.SimpleDateFormat
@@ -62,6 +63,11 @@ class PreSettingsFragment : Fragment() {
                 setPartnerData()
                 setLoveDate()
 
+                mViewModel.insert(AppPerson(yourName = yourNameText, yourBirthdayDate = yourBirthdayDateText,
+                yourGender = yourGenderText, partnerName = partnerNameText, partnerBirthdayDate = partnerBirthdayText,
+                partnerGender = partnerGenderText, loveDate = loveDayText)) {
+                    APP_ACTIVITY.mNavController.navigate(R.id.action_preSettingsFragment_to_mainFragment)
+                }
 
                 Log.d("getAllData", "Name: $yourNameText")
                 Log.d("getAllData", "Birthday: $yourBirthdayDateText")

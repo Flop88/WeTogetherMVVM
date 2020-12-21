@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "person_tables")
 data class AppPerson(
+
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
@@ -16,7 +17,7 @@ data class AppPerson(
     val yourBirthdayDate: String = "",
 
     @ColumnInfo
-    val yourGender: Int = 0,
+    val yourGender: String = "",
 
     @ColumnInfo
     val partnerName: String = "",
@@ -25,7 +26,7 @@ data class AppPerson(
     val partnerBirthdayDate: String = "",
 
     @ColumnInfo
-    val partnerGender: Int = 0,
+    val partnerGender: String = "",
 
     @ColumnInfo
     val loveDate: String = ""

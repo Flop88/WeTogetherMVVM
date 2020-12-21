@@ -7,8 +7,12 @@ import android.util.Log
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import ru.mvlikhachev.wetogether.database.Room.AppRoomDatabase
 import ru.mvlikhachev.wetogether.database.Room.AppRoomRepository
+import ru.mvlikhachev.wetogether.model.AppPerson
 import ru.mvlikhachev.wetogether.utils.APP_ACTIVITY
 import ru.mvlikhachev.wetogether.utils.REPOSITORY
 import ru.mvlikhachev.wetogether.utils.TYPE_ROOM
@@ -27,6 +31,14 @@ class PreSettingsFragmentViewModel(application: Application) : AndroidViewModel(
             }
         }
     }
+
+    fun insert(appPerson: AppPerson, onSuccess: () -> Unit) =
+        viewModelScope.launch(Dispatchers.Main) {
+            REPOSITORY.insert(appPerson) {
+                onSuccess()
+            }
+        }
+
 
     private fun initDatePicker() {
         lateinit var textYourBirthday: TextView  // <---- ????
