@@ -39,31 +39,26 @@ class PreSettingsFragmentViewModel(application: Application) : AndroidViewModel(
             }
         }
 
+    fun isDatabaseExist(type: String) : Boolean {
+        val dao = AppRoomDatabase.getInstance(mContext).getAppRoomDao()
+        var isDbCreated = false
+        Log.d("DBCHECK", "isDbCreated is $isDbCreated ")
+        Log.d("DBCHECK", "dao is $dao ")
 
-    private fun initDatePicker() {
-        lateinit var textYourBirthday: TextView  // <---- ????
-        textYourBirthday.text = SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
-
-        var cal = Calendar.getInstance()
-
-        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            cal.set(Calendar.YEAR, year)
-            cal.set(Calendar.MONTH, monthOfYear)
-            cal.set(Calendar.DAY_OF_YEAR, dayOfMonth)
-
-            val myFormat = "dd.MM.yyy"
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
-            textYourBirthday.text = sdf.format(cal.time)
+        val db = "qwe"
+        when (type) {
+            TYPE_ROOM -> {
+                if (db.isNotEmpty()) {
+                    isDbCreated = true
+                    Log.d("DBCHECK", "isDbCreated changed $isDbCreated ")
+                } else {
+                    isDbCreated =  false
+                    Log.d("DBCHECK", "isDbCreated changed $isDbCreated ")
+                }
+            }
         }
-
-        textYourBirthday.setOnClickListener {
-            DatePickerDialog(
-                APP_ACTIVITY, dateSetListener,
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)).show()
-        }
-
+        Log.d("DBCHECK", "isDbCreated return $isDbCreated ")
+        return isDbCreated
     }
 
 }

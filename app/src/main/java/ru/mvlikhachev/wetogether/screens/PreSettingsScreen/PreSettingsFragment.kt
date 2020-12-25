@@ -49,12 +49,23 @@ class PreSettingsFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
         initialization()
+    }
+
+    private fun checkStart() {
+        if (mViewModel.isDatabaseExist(TYPE_ROOM)) {
+            Log.d("DBCHECK", "DB is Created")
+            APP_ACTIVITY.mNavController.navigate(R.id.action_preSettingsFragment_to_mainFragment)
+        } else {
+            Log.d("DBCHECK", "DB is not Created")
+        }
     }
 
     private fun initialization() {
         mViewModel = ViewModelProvider(this).get(PreSettingsFragmentViewModel::class.java)
+
+        checkStart()
+
         mViewModel.initDatabase(TYPE_ROOM) {
 
             savePreSettingButton.setOnClickListener {
