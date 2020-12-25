@@ -100,7 +100,6 @@ class PreSettingsFragment : Fragment() {
             setYourData()
             setPartnerData()
             setLoveDate()
-
         }
     }
 

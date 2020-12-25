@@ -27,7 +27,13 @@ class MainFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
         initialization()
+        loadData()
+    }
+
+    private fun loadData() {
+        Log.d("loadData", mViewModel.loadData().toString())
     }
 
     private fun initialization() {

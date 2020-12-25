@@ -1,5 +1,6 @@
 package ru.mvlikhachev.wetogether.database.Room
 
+import android.app.Person
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import ru.mvlikhachev.wetogether.model.AppPerson
