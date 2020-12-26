@@ -6,9 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.android.synthetic.main.fragment_main.*
 import ru.mvlikhachev.wetogether.R
 import ru.mvlikhachev.wetogether.databinding.FragmentMainBinding
+import ru.mvlikhachev.wetogether.model.AppPerson
+import ru.mvlikhachev.wetogether.utils.APP_ACTIVITY
 
 class MainFragment : Fragment() {
 
@@ -33,8 +37,16 @@ class MainFragment : Fragment() {
     }
 
     private fun loadData() {
-        mViewModel.loadData(1)
+         mViewModel.readUserData.observe(APP_ACTIVITY, Observer { user ->
+             val currentUser = user.get(0)
+            setData(currentUser)
+        })
     }
+
+    private fun setData(currentUser: AppPerson) {
+        testNameTextView.text = currentUser.yourName
+    }
+
 
     private fun initialization() {
         mViewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)

@@ -10,10 +10,15 @@ class AppRoomRepository(private val appRoomDao: AppRoomDao) : DatabaseRepository
     override val allNotes: LiveData<List<AppPerson>>
         get() = appRoomDao.getAllPersons()
 
-    override suspend fun getPersonById(id: Int): AppPerson {
+    override suspend fun getPersonById(id: Int): LiveData<AppPerson> {
         val person = appRoomDao.getById(id)
         return person
     }
+
+//    override suspend fun getPersonById(id: Int): LiveData<AppPerson> {
+//        val person = appRoomDao.getById(id)
+//        return person
+//    }
 
 
     override suspend fun insert(person: AppPerson, onSuccess: () -> Unit) {

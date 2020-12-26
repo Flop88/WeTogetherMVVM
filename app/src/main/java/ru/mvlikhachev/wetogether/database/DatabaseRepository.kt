@@ -7,7 +7,7 @@ interface DatabaseRepository {
 
     val allNotes: LiveData<List<AppPerson>>
 
-    suspend fun getPersonById(id: Int) : AppPerson
+    suspend fun getPersonById(id: Int) : LiveData<AppPerson>
 
     suspend fun insert(person: AppPerson, onSuccess:() -> Unit)
     suspend fun delete(person: AppPerson, onSuccess:() -> Unit)

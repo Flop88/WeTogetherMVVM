@@ -12,7 +12,7 @@ interface AppRoomDao {
     fun getAllPersons() : LiveData<List<AppPerson>>
 
     @Query("SELECT * FROM person_tables WHERE id = :id")
-    suspend fun getById(id: Int) : AppPerson
+    fun getById(id: Int) : LiveData<AppPerson>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(note: AppPerson)
