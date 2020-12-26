@@ -33,7 +33,7 @@ class MainFragment : Fragment() {
     }
 
     private fun loadData() {
-        Log.d("loadData", mViewModel.loadData().toString())
+        mViewModel.loadData(1)
     }
 
     private fun initialization() {
