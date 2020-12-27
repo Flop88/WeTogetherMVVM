@@ -40,21 +40,15 @@ class PreSettingsFragmentViewModel(application: Application) : AndroidViewModel(
         }
 
     fun isDatabaseExist(type: String) : Boolean {
-        val dao = AppRoomDatabase.getInstance(mContext).getAppRoomDao()
-        var isDbCreated = false
-        Log.d("DBCHECK", "isDbCreated is $isDbCreated ")
-        Log.d("DBCHECK", "dao is $dao ")
 
-        val db = "qwe"
+        var isDbCreated = false
         when (type) {
             TYPE_ROOM -> {
-                if (db.isNotEmpty()) {
-                    isDbCreated = true
-                    Log.d("DBCHECK", "isDbCreated changed $isDbCreated ")
-                } else {
-                    isDbCreated =  false
-                    Log.d("DBCHECK", "isDbCreated changed $isDbCreated ")
-                }
+//                viewModelScope.launch(Dispatchers.IO) {
+                    val isExists = AppRoomDatabase.getInstance(mContext).getAppRoomDao().isExists()
+                    Log.d("DBCHECK", "isExists is: $isExists ")
+                    isDbCreated = isExists
+//                }
             }
         }
         Log.d("DBCHECK", "isDbCreated return $isDbCreated ")

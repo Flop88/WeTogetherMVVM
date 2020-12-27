@@ -8,10 +8,6 @@ import ru.mvlikhachev.wetogether.utils.REPOSITORY
 
 class MainFragmentViewModel(application: Application) : AndroidViewModel(application) {
 
-     val readUserData: LiveData<List<AppPerson>>
-
-    init {
-            readUserData = REPOSITORY.allNotes
-    }
+     val readUserData: LiveData<List<AppPerson>> = REPOSITORY.allNotes
 
 }

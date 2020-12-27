@@ -15,12 +15,6 @@ class AppRoomRepository(private val appRoomDao: AppRoomDao) : DatabaseRepository
         return person
     }
 
-//    override suspend fun getPersonById(id: Int): LiveData<AppPerson> {
-//        val person = appRoomDao.getById(id)
-//        return person
-//    }
-
-
     override suspend fun insert(person: AppPerson, onSuccess: () -> Unit) {
         appRoomDao.insert(person)
         onSuccess()
@@ -30,6 +24,9 @@ class AppRoomRepository(private val appRoomDao: AppRoomDao) : DatabaseRepository
         appRoomDao.delete(person)
         onSuccess()
     }
+
+    override val isDBExists: Boolean
+        get() = appRoomDao.isExists()
 
 
 }

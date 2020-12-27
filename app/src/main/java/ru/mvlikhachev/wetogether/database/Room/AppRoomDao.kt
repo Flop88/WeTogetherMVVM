@@ -19,4 +19,7 @@ interface AppRoomDao {
 
     @Delete
     suspend fun delete(note: AppPerson)
+
+    @Query("SELECT EXISTS(SELECT * FROM person_tables)")
+    fun isExists(): Boolean
 }
