@@ -37,14 +37,16 @@ class MainFragment : Fragment() {
     }
 
     private fun loadData() {
-         mViewModel.readUserData.observe(APP_ACTIVITY, Observer { user ->
-             val currentUser = user.get(0)
-            setData(currentUser)
+         mViewModel.readUserData.observe(APP_ACTIVITY, { user ->
+             val currentUser = user[0]
+             setData(currentUser)
         })
     }
 
     private fun setData(currentUser: AppPerson) {
-        testNameTextView.text = currentUser.yourName
+        mainYourNameTextView.text = "Здраствуйте, ${currentUser.yourName}"
+        Log.d("loveDate", currentUser.loveDate)
+
     }
 
 
