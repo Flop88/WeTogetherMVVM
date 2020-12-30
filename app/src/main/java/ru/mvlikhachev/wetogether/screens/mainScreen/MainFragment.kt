@@ -46,6 +46,7 @@ class MainFragment : Fragment() {
     private fun setData(currentUser: AppPerson) {
         mainYourNameTextView.text = "Здраствуйте, ${currentUser.yourName}"
         Log.d("loveDate", currentUser.loveDate)
+        Log.d("loveDate", currentUser.loveDate)
 
     }
 

@@ -45,9 +45,9 @@ class PreSettingsFragmentViewModel(application: Application) : AndroidViewModel(
         when (type) {
             TYPE_ROOM -> {
 //                viewModelScope.launch(Dispatchers.IO) {
-                    val isExists = AppRoomDatabase.getInstance(mContext).getAppRoomDao().isExists()
-                    Log.d("DBCHECK", "isExists is: $isExists ")
-                    isDbCreated = isExists
+//                    val isExists = AppRoomDatabase.getInstance(mContext).getAppRoomDao().isExists()
+//                    Log.d("DBCHECK", "isExists is: $isExists ")
+                    isDbCreated = true
 //                }
             }
         }
