@@ -43,7 +43,6 @@ class PreSettingsFragment : Fragment() {
     ): View? {
 
         _binding = FragmentPreSettingsBinding.inflate(layoutInflater, container, false)
-        // Inflate the layout for this fragment
         return mBinding.root
     }
 
@@ -175,7 +174,6 @@ class PreSettingsFragment : Fragment() {
             month,
             day
         )
-
         datePickerDialog.show()
     }
 
