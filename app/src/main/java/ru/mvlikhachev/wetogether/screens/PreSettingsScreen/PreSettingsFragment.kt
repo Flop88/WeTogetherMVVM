@@ -27,8 +27,8 @@ class PreSettingsFragment : Fragment() {
 
     private var _binding: FragmentPreSettingsBinding? = null
     private val mBinding get() = _binding!!
-    private lateinit var mViewModel: PreSettingsFragmentViewModel
 
+    private lateinit var mViewModel: PreSettingsFragmentViewModel
     private lateinit var yourNameText: String
     private lateinit var yourBirthdayDateText: String
     private lateinit var yourGenderText: String
