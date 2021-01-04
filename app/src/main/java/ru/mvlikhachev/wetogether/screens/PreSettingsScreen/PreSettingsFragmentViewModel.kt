@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,6 +22,7 @@ import java.util.*
 
 class PreSettingsFragmentViewModel(application: Application) : AndroidViewModel(application) {
     private val mContext = application
+    lateinit var readUserData: LiveData<List<AppPerson>>
 
     fun initDatabase(type: String, onSuccess:() -> Unit) {
         when(type) {
@@ -40,11 +42,23 @@ class PreSettingsFragmentViewModel(application: Application) : AndroidViewModel(
         }
 
     fun isDatabaseExist(type: String) : Boolean {
+        val db = AppRoomDatabase.getInstance(mContext)
+
+        var database:AppRoomDatabase?=null
+        val dao = AppRoomDatabase.getInstance(mContext).getAppRoomDao()
+
+        REPOSITORY = AppRoomRepository(dao)
+        readUserData  = REPOSITORY.allNotes
 
         var isDbCreated = false
         when (type) {
             TYPE_ROOM -> {
-                    isDbCreated = true
+                    isDbCreated = false
+                    Log.d("DBCHECK", "db is ${db} ")
+                    Log.d("DBCHECK", "readUserData is ${readUserData.observeForever { 
+                        
+                    }} ")
+                    Log.d("DBCHECK", "isDbCreated is $isDbCreated ")
             }
         }
         Log.d("DBCHECK", "isDbCreated return $isDbCreated ")
