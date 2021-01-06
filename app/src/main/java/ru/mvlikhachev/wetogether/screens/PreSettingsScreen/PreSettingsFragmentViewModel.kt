@@ -33,7 +33,6 @@ class PreSettingsFragmentViewModel(application: Application) : AndroidViewModel(
                 onSuccess()
             }
         }
-
     fun isDatabaseExist(type: String) : Boolean {
         val db = AppRoomDatabase.getInstance(mContext)
 
