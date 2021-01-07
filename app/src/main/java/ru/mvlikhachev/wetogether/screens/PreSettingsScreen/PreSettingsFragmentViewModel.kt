@@ -35,7 +35,6 @@ class PreSettingsFragmentViewModel(application: Application) : AndroidViewModel(
         }
     fun isDatabaseExist(type: String) : Boolean {
         val db = AppRoomDatabase.getInstance(mContext)
-
         var database:AppRoomDatabase?=null
         val dao = AppRoomDatabase.getInstance(mContext).getAppRoomDao()
 
