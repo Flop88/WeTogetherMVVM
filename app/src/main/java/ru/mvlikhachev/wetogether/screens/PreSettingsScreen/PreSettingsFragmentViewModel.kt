@@ -26,7 +26,6 @@ class PreSettingsFragmentViewModel(application: Application) : AndroidViewModel(
             }
         }
     }
-
     fun insert(appPerson: AppPerson, onSuccess: () -> Unit) =
         viewModelScope.launch(Dispatchers.Main) {
             REPOSITORY.insert(appPerson) {
