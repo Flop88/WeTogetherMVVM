@@ -41,7 +41,6 @@ class PreSettingsFragmentViewModel(application: Application) : AndroidViewModel(
         REPOSITORY = AppRoomRepository(dao)
         readUserData  = REPOSITORY.allNotes
 
-
         when (type) {
             TYPE_ROOM -> {
                     isDbCreated = false
